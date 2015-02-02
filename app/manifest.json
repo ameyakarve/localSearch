@@ -1,0 +1,43 @@
+{
+    "name": "__MSG_appName__",
+    "version": "0.0.111",
+    "manifest_version": 2,
+    "description": "__MSG_appDescription__",
+    "default_locale": "en",
+    "background": {
+        "scripts": [
+            "scripts/lunr.js",
+            "scripts/background.js"
+        ],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_title": "project-loo",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "all_frames": false,
+            "js": [
+                "scripts/immutable.js",
+                "scripts/indexer.js"
+            ],
+            "matches": [
+                "http://iwww.corp.linkedin.com/wiki/cf/display*",
+                "https://iwww.corp.linkedin.com/wiki/cf/display*"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "omnibox": {
+        "keyword": "li"
+    },
+    "optional_permissions": [
+        "history",
+        "management"
+    ],
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
+}
